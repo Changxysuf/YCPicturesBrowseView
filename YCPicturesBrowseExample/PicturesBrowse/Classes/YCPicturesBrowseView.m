@@ -48,7 +48,16 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (instancetype)initWithPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray index:(NSInteger)index backgroundColor:(UIColor *)backgroundColor {
++ (instancetype)browseViewPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
+                                 index:(NSInteger)index {
+    YCPicturesBrowseView *pictureShowView = [[YCPicturesBrowseView alloc] initWithPictureArray:pictureArray index:index backgroundColor:nil];
+    return pictureShowView;
+}
+
+
+- (instancetype)initWithPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
+                               index:(NSInteger)index
+                     backgroundColor:(UIColor *)backgroundColor {
     
     self = [super init];
     if (self) {
@@ -67,11 +76,6 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     [self updateDisPlay];
 }
 
-+ (instancetype)browseViewPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
-                                 index:(NSInteger)index {
-    YCPicturesBrowseView *pictureShowView = [[YCPicturesBrowseView alloc] initWithPictureArray:pictureArray index:index backgroundColor:nil];
-    return pictureShowView;
-}
 
 - (void)showOnView:(UIView *)basicView fromView:(UIView *)fromView animation:(BOOL)animation {
     _showAnimation = animation;

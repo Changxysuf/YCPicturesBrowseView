@@ -81,23 +81,22 @@
 + (instancetype)browseViewPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
                                  index:(NSInteger)index;
 
-- (void)showOnView:(UIView *)basicView fromView:(UIView *)fromView animation:(BOOL)animation;
-
-- (void)showOnViewKeyWindowFromView:(UIView *)fromView animation:(BOOL)animation;
-
 /**
  初始化方法
  
- @param frame        view的frame
  @param pictureArray 图片数组(数组元素类型: YCPicturesShowModel)
  @param index        当前要展示的图片的索引
  
  @return 实例
  */
-- (instancetype)initWithWithFrame:(CGRect)frame
-                     pictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
-                            index:(NSInteger)index
-                  backgroundColor:(UIColor *)backgroundColor;
+- (instancetype)initWithPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
+                               index:(NSInteger)index
+                     backgroundColor:(UIColor *)backgroundColor;
+
+- (void)showOnView:(UIView *)basicView fromView:(UIView *)fromView animation:(BOOL)animation;
+
+- (void)showOnViewKeyWindowFromView:(UIView *)fromView animation:(BOOL)animation;
+
 
 @end
 

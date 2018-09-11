@@ -15,6 +15,10 @@
 		2CA1E65D21476FB300D86598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E65C21476FB300D86598 /* main.m */; };
 		2CA1E66721476FB300D86598 /* YCPicturesBrowseExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E66621476FB300D86598 /* YCPicturesBrowseExampleTests.m */; };
 		2CA1E67221476FB300D86598 /* YCPicturesBrowseExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E67121476FB300D86598 /* YCPicturesBrowseExampleUITests.m */; };
+		2CA1E68921477B4B00D86598 /* YCPicturesBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E68321477B4B00D86598 /* YCPicturesBrowseView.m */; };
+		2CA1E68A21477B4B00D86598 /* YCPicturesBrowseViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E68521477B4B00D86598 /* YCPicturesBrowseViewLayout.m */; };
+		2CA1E68B21477B4B00D86598 /* yc_image_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA1E68721477B4B00D86598 /* yc_image_placeholder@2x.png */; };
+		2CA1E68C21477B4B00D86598 /* yc_image_placeholder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA1E68821477B4B00D86598 /* yc_image_placeholder@3x.png */; };
 		6ED6270541EFB5035F8D5B33 /* libPods-YCPicturesBrowseExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A78A58CBCBE273BBE83DC /* libPods-YCPicturesBrowseExample.a */; };
 		E422DC5AB94CB9C4A3ED270B /* libPods-YCPicturesBrowseExampleUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F455AB1C783A83066911D6 /* libPods-YCPicturesBrowseExampleUITests.a */; };
 		E8C48040005660BF5E76E466 /* libPods-YCPicturesBrowseExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBE24123A0FCFC7FCD2DCC8 /* libPods-YCPicturesBrowseExampleTests.a */; };
@@ -57,6 +61,13 @@
 		2CA1E66D21476FB300D86598 /* YCPicturesBrowseExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YCPicturesBrowseExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA1E67121476FB300D86598 /* YCPicturesBrowseExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCPicturesBrowseExampleUITests.m; sourceTree = "<group>"; };
 		2CA1E67321476FB300D86598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CA1E68121477B4B00D86598 /* YCPicturesBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCPicturesBrowseView.h; sourceTree = "<group>"; };
+		2CA1E68221477B4B00D86598 /* YCPicturesBrowseViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCPicturesBrowseViewLayout.h; sourceTree = "<group>"; };
+		2CA1E68321477B4B00D86598 /* YCPicturesBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCPicturesBrowseView.m; sourceTree = "<group>"; };
+		2CA1E68421477B4B00D86598 /* YCPicturesBrowseToolbarProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCPicturesBrowseToolbarProtocol.h; sourceTree = "<group>"; };
+		2CA1E68521477B4B00D86598 /* YCPicturesBrowseViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCPicturesBrowseViewLayout.m; sourceTree = "<group>"; };
+		2CA1E68721477B4B00D86598 /* yc_image_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yc_image_placeholder@2x.png"; sourceTree = "<group>"; };
+		2CA1E68821477B4B00D86598 /* yc_image_placeholder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yc_image_placeholder@3x.png"; sourceTree = "<group>"; };
 		2EB2C5108F7F30DF2967B3FA /* Pods-YCPicturesBrowseExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCPicturesBrowseExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCPicturesBrowseExampleUITests/Pods-YCPicturesBrowseExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EC6F1A8AF3B3FD147B1E296 /* Pods-YCPicturesBrowseExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCPicturesBrowseExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCPicturesBrowseExampleTests/Pods-YCPicturesBrowseExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9EBE24123A0FCFC7FCD2DCC8 /* libPods-YCPicturesBrowseExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YCPicturesBrowseExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +107,7 @@
 		2CA1E64121476FB100D86598 = {
 			isa = PBXGroup;
 			children = (
+				2CA1E67F21477B4B00D86598 /* PicturesBrowse */,
 				2CA1E64C21476FB100D86598 /* YCPicturesBrowseExample */,
 				2CA1E66521476FB300D86598 /* YCPicturesBrowseExampleTests */,
 				2CA1E67021476FB300D86598 /* YCPicturesBrowseExampleUITests */,
@@ -147,6 +159,36 @@
 				2CA1E67321476FB300D86598 /* Info.plist */,
 			);
 			path = YCPicturesBrowseExampleUITests;
+			sourceTree = "<group>";
+		};
+		2CA1E67F21477B4B00D86598 /* PicturesBrowse */ = {
+			isa = PBXGroup;
+			children = (
+				2CA1E68021477B4B00D86598 /* Classes */,
+				2CA1E68621477B4B00D86598 /* Assets */,
+			);
+			path = PicturesBrowse;
+			sourceTree = "<group>";
+		};
+		2CA1E68021477B4B00D86598 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2CA1E68121477B4B00D86598 /* YCPicturesBrowseView.h */,
+				2CA1E68221477B4B00D86598 /* YCPicturesBrowseViewLayout.h */,
+				2CA1E68321477B4B00D86598 /* YCPicturesBrowseView.m */,
+				2CA1E68421477B4B00D86598 /* YCPicturesBrowseToolbarProtocol.h */,
+				2CA1E68521477B4B00D86598 /* YCPicturesBrowseViewLayout.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2CA1E68621477B4B00D86598 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2CA1E68721477B4B00D86598 /* yc_image_placeholder@2x.png */,
+				2CA1E68821477B4B00D86598 /* yc_image_placeholder@3x.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		4089BBC6C328BE9BC9514DEF /* Pods */ = {
@@ -278,9 +320,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA1E68B21477B4B00D86598 /* yc_image_placeholder@2x.png in Resources */,
 				2CA1E65A21476FB300D86598 /* LaunchScreen.storyboard in Resources */,
 				2CA1E65721476FB300D86598 /* Assets.xcassets in Resources */,
 				2CA1E65521476FB100D86598 /* Main.storyboard in Resources */,
+				2CA1E68C21477B4B00D86598 /* yc_image_placeholder@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +407,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CA1E65221476FB100D86598 /* ViewController.m in Sources */,
+				2CA1E68A21477B4B00D86598 /* YCPicturesBrowseViewLayout.m in Sources */,
+				2CA1E68921477B4B00D86598 /* YCPicturesBrowseView.m in Sources */,
 				2CA1E65D21476FB300D86598 /* main.m in Sources */,
 				2CA1E64F21476FB100D86598 /* AppDelegate.m in Sources */,
 			);
@@ -534,9 +580,13 @@
 			baseConfigurationReference = 204C4E07C2C5B93A934BAD2D /* Pods-YCPicturesBrowseExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YCPicturesBrowseExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.changxy.picturesbrowse.YCPicturesBrowseExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -548,9 +598,13 @@
 			baseConfigurationReference = F5E07EB75A8A4B29998CAA1A /* Pods-YCPicturesBrowseExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YCPicturesBrowseExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.changxy.picturesbrowse.YCPicturesBrowseExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -564,7 +618,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YCPicturesBrowseExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.changxy.picturesbrowse.YCPicturesBrowseExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -579,7 +637,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YCPicturesBrowseExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.changxy.picturesbrowse.YCPicturesBrowseExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -593,7 +655,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YCPicturesBrowseExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.changxy.picturesbrowse.YCPicturesBrowseExampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -607,7 +673,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YCPicturesBrowseExampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.changxy.picturesbrowse.YCPicturesBrowseExampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
