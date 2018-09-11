@@ -19,6 +19,7 @@
 		2CA1E68A21477B4B00D86598 /* YCPicturesBrowseViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E68521477B4B00D86598 /* YCPicturesBrowseViewLayout.m */; };
 		2CA1E68B21477B4B00D86598 /* yc_image_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA1E68721477B4B00D86598 /* yc_image_placeholder@2x.png */; };
 		2CA1E68C21477B4B00D86598 /* yc_image_placeholder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA1E68821477B4B00D86598 /* yc_image_placeholder@3x.png */; };
+		2CA1E6D02147936000D86598 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E6CE2147936000D86598 /* UIView+Extension.m */; };
 		6ED6270541EFB5035F8D5B33 /* libPods-YCPicturesBrowseExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A78A58CBCBE273BBE83DC /* libPods-YCPicturesBrowseExample.a */; };
 		E422DC5AB94CB9C4A3ED270B /* libPods-YCPicturesBrowseExampleUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F455AB1C783A83066911D6 /* libPods-YCPicturesBrowseExampleUITests.a */; };
 		E8C48040005660BF5E76E466 /* libPods-YCPicturesBrowseExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBE24123A0FCFC7FCD2DCC8 /* libPods-YCPicturesBrowseExampleTests.a */; };
@@ -68,6 +69,8 @@
 		2CA1E68521477B4B00D86598 /* YCPicturesBrowseViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCPicturesBrowseViewLayout.m; sourceTree = "<group>"; };
 		2CA1E68721477B4B00D86598 /* yc_image_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yc_image_placeholder@2x.png"; sourceTree = "<group>"; };
 		2CA1E68821477B4B00D86598 /* yc_image_placeholder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yc_image_placeholder@3x.png"; sourceTree = "<group>"; };
+		2CA1E6CE2147936000D86598 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		2CA1E6CF2147936000D86598 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		2EB2C5108F7F30DF2967B3FA /* Pods-YCPicturesBrowseExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCPicturesBrowseExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCPicturesBrowseExampleUITests/Pods-YCPicturesBrowseExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EC6F1A8AF3B3FD147B1E296 /* Pods-YCPicturesBrowseExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCPicturesBrowseExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCPicturesBrowseExampleTests/Pods-YCPicturesBrowseExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9EBE24123A0FCFC7FCD2DCC8 /* libPods-YCPicturesBrowseExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YCPicturesBrowseExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +133,8 @@
 		2CA1E64C21476FB100D86598 /* YCPicturesBrowseExample */ = {
 			isa = PBXGroup;
 			children = (
+				2CA1E6CF2147936000D86598 /* UIView+Extension.h */,
+				2CA1E6CE2147936000D86598 /* UIView+Extension.m */,
 				2CA1E64D21476FB100D86598 /* AppDelegate.h */,
 				2CA1E64E21476FB100D86598 /* AppDelegate.m */,
 				2CA1E65021476FB100D86598 /* ViewController.h */,
@@ -406,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA1E6D02147936000D86598 /* UIView+Extension.m in Sources */,
 				2CA1E65221476FB100D86598 /* ViewController.m in Sources */,
 				2CA1E68A21477B4B00D86598 /* YCPicturesBrowseViewLayout.m in Sources */,
 				2CA1E68921477B4B00D86598 /* YCPicturesBrowseView.m in Sources */,
