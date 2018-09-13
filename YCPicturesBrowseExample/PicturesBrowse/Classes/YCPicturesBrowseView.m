@@ -527,6 +527,7 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
         imageViewOriginY = (self.bounds.size.height - _scaleScrollView.contentSize.height) / 2;
     }
     _imageView.frame = CGRectMake(0, imageViewOriginY, _scaleScrollView.contentSize.width, _scaleScrollView.contentSize.height);
+    _imageOriginFrame = _imageView.frame;
 }
 
 #pragma mark - 处理手势
