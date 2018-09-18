@@ -218,11 +218,20 @@
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
         
         CGPoint point = [panGestureRecognizer translationInView:_scaleScrollView];
+        
         CGFloat centerX = _imageView.center.x + point.x;
         CGFloat centerY = _imageView.center.y + point.y;
         
+
+        
         //向下拖动的比例, 屏幕中间点是0, 最下方是1
-        float scale = (centerY / (self.bounds.size.height / 2)) - 1.2;
+        float scale = 0;
+        if (_imageOriginFrame.size.height < self.bounds.size.height) {
+            scale = (centerY / (self.bounds.size.height / 2)) - 1;
+        } else {
+            scale = ((centerY / _imageOriginFrame.size.height) - 0.5) * _scaleScrollView.zoomScale;
+        }
+        
         
         //当前拖动比例下的宽高
         float currentWidth = _imageViewFrame.size.width - (_imageViewFrame.size.width * scale);
@@ -236,7 +245,10 @@
             size.width = 200;
             size.height = size.width * (_imageViewFrame.size.height / _imageViewFrame.size.width);
         }
+        centerY = _imageView.center.y + point.y / _scaleScrollView.zoomScale;
         
+        NSLog(@"width :%@ height :%@ scale:%@", @(centerX), @(centerY), @(scale));
+
         //设置size 和center
         _imageView.bounds = CGRectMake(0, 0, size.width, size.height);
         _imageView.center = CGPointMake(centerX, centerY);
@@ -276,6 +288,9 @@
     }
 }
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (_scaleScrollView.contentOffset.y > 0) {
+        return NO;
+    }
     if (gestureRecognizer == _panGestureRecognizer) {
         CGPoint point = [_panGestureRecognizer translationInView:_scaleScrollView];
         CGPoint velocity = [_panGestureRecognizer velocityInView:_scaleScrollView];
