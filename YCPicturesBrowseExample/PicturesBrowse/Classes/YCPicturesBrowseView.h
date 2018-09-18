@@ -45,8 +45,6 @@
 
 
 
-
-
 @protocol YCPicturesBrowseViewDelegate <NSObject>
 
 @optional
@@ -72,14 +70,14 @@
 @property (nonatomic, weak) id <YCPicturesBrowseViewDelegate> delegate;
 @property (nonatomic, weak) id <YCPicturesBrowseViewDataScource> dataSource;
 
-
 /** 页码的view 在整个视图的最底部 */
 @property (nonatomic) UIView<YCPicturesBrowseToolbarProtocol> * toolbar;
 
+//背景色
 @property (nonatomic, strong) UIColor *backgroundColor;
 
-+ (instancetype)browseViewPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
-                                 index:(NSInteger)index;
+//当前的index
+@property (nonatomic, assign, readonly) NSInteger index;
 
 /**
  初始化方法
@@ -89,70 +87,29 @@
  
  @return 实例
  */
++ (instancetype)browseViewPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
+                                 index:(NSInteger)index;
+
+/**
+ 初始化方法
+ 
+ @param pictureArray 图片数组(数组元素类型: YCPicturesShowModel)
+ @param index        当前要展示的图片的索引
+ @param backgroundColor 背景色
+ @return 实例
+ */
 - (instancetype)initWithPictureArray:(NSArray<YCPicturesBrowseModel *> *)pictureArray
                                index:(NSInteger)index
                      backgroundColor:(UIColor *)backgroundColor;
 
+//展示指定的父view
 - (void)showOnView:(UIView *)basicView fromView:(UIView *)fromView animation:(BOOL)animation;
 
+//展示在keyWindow上
 - (void)showOnViewKeyWindowFromView:(UIView *)fromView animation:(BOOL)animation;
 
 
 @end
 
 
-
-
-
-
-#pragma mark -
-#pragma mark - YCPicturesBrowseCollectionViewCellDelegate
-/**
- * 图片展示cell的代理
- */
-@protocol YCPicturesBrowseCellDelegate<NSObject>
-
-/**
- 点击图片的回调
- 
- @param cell      cell
- @param imageView 点击的ImageView
- */
-- (void)collectionViewCell:(YCPicturesBrowseCell *)cell tappedImageView:(UIImageView *)imageView;
-
-- (void)collectionViewCell:(YCPicturesBrowseCell *)cell didSwipImageWithScale:(float)scale;
-
-- (BOOL)collectionViewCell:(YCPicturesBrowseCell *)cell didEndSwipImageWithVelocity:(CGPoint)velocity;
-
-- (void)collectionViewCell:(YCPicturesBrowseCell *)cell didLongPressForImage:(UIImage *)image;
-
-@end
-
-
-#pragma mark -
-#pragma mark - YCPicturesShowCollectionViewCell
-/**
- * 图片展示的cell
- */
-@interface YCPicturesBrowseCell : UICollectionViewCell
-
-
-@property(nonatomic, weak) id<YCPicturesBrowseCellDelegate> delegate;
-
-@property (nonatomic, strong) YCPicturesBrowseModel *picturesBrowseModel;
-
-/**
- * 重置比例(当滑动图片的时候把scrollView的比例重置)
- */
-- (void)resetScale;
-
-
-/**
- 更新显示
- 
- @param browseModel YCPicturesBrowseModel
- */
-- (void)updateDisplayWithPicturesBrowseModel:(YCPicturesBrowseModel *)browseModel;
-
-@end
 

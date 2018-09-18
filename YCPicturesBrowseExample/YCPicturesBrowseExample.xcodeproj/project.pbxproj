@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C4C0C8B2150FB00000F2DAB /* YCPicturesBrowseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C0C8A2150FB00000F2DAB /* YCPicturesBrowseCell.m */; };
 		2CA1E64F21476FB100D86598 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E64E21476FB100D86598 /* AppDelegate.m */; };
 		2CA1E65221476FB100D86598 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E65121476FB100D86598 /* ViewController.m */; };
 		2CA1E65521476FB100D86598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CA1E65321476FB100D86598 /* Main.storyboard */; };
@@ -46,6 +47,8 @@
 		075A78A58CBCBE273BBE83DC /* libPods-YCPicturesBrowseExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YCPicturesBrowseExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		204C4E07C2C5B93A934BAD2D /* Pods-YCPicturesBrowseExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCPicturesBrowseExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCPicturesBrowseExample/Pods-YCPicturesBrowseExample.debug.xcconfig"; sourceTree = "<group>"; };
 		23740427D2FEEB92F26FBACE /* Pods-YCPicturesBrowseExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCPicturesBrowseExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YCPicturesBrowseExampleUITests/Pods-YCPicturesBrowseExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2C4C0C892150FB00000F2DAB /* YCPicturesBrowseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCPicturesBrowseCell.h; sourceTree = "<group>"; };
+		2C4C0C8A2150FB00000F2DAB /* YCPicturesBrowseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCPicturesBrowseCell.m; sourceTree = "<group>"; };
 		2CA1E64A21476FB100D86598 /* YCPicturesBrowseExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YCPicturesBrowseExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA1E64D21476FB100D86598 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2CA1E64E21476FB100D86598 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -178,10 +181,12 @@
 		2CA1E68021477B4B00D86598 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2CA1E68121477B4B00D86598 /* YCPicturesBrowseView.h */,
-				2CA1E68221477B4B00D86598 /* YCPicturesBrowseViewLayout.h */,
-				2CA1E68321477B4B00D86598 /* YCPicturesBrowseView.m */,
 				2CA1E68421477B4B00D86598 /* YCPicturesBrowseToolbarProtocol.h */,
+				2CA1E68121477B4B00D86598 /* YCPicturesBrowseView.h */,
+				2CA1E68321477B4B00D86598 /* YCPicturesBrowseView.m */,
+				2C4C0C892150FB00000F2DAB /* YCPicturesBrowseCell.h */,
+				2C4C0C8A2150FB00000F2DAB /* YCPicturesBrowseCell.m */,
+				2CA1E68221477B4B00D86598 /* YCPicturesBrowseViewLayout.h */,
 				2CA1E68521477B4B00D86598 /* YCPicturesBrowseViewLayout.m */,
 			);
 			path = Classes;
@@ -413,6 +418,7 @@
 			files = (
 				2CA1E6D02147936000D86598 /* UIView+Extension.m in Sources */,
 				2CA1E65221476FB100D86598 /* ViewController.m in Sources */,
+				2C4C0C8B2150FB00000F2DAB /* YCPicturesBrowseCell.m in Sources */,
 				2CA1E68A21477B4B00D86598 /* YCPicturesBrowseViewLayout.m in Sources */,
 				2CA1E68921477B4B00D86598 /* YCPicturesBrowseView.m in Sources */,
 				2CA1E65D21476FB300D86598 /* main.m in Sources */,
