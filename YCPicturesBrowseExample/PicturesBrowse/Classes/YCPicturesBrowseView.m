@@ -356,4 +356,3 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
 #pragma mark -
 
 @end
-
