@@ -193,7 +193,7 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     _collectionViewLayout.showType             = _pictureShowType;
     
     UIView *basicView = nil;
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(picturesBrowseView:targetViewAtIndex:)]) {
+    if (_pictureShowType == YCPictureBrowseTypeOfZoomOut && self.dataSource && [self.dataSource respondsToSelector:@selector(picturesBrowseView:targetViewAtIndex:)]) {
         basicView = [self.dataSource picturesBrowseView:self targetViewAtIndex:_index];
     }
     if (basicView) {
@@ -213,15 +213,15 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     }
     [UIView animateWithDuration: _showAnimation ? 0.2 : 0
                      animations:^{
-                         _collectionView.backgroundColor = _backgroundColor;
+                         self->_collectionView.backgroundColor = self->_backgroundColor;
                      } completion:^(BOOL finished) {
                          [UIView animateWithDuration:0.2 animations:^{
-                             _toolBarContainerView.alpha = 1;                             
+                             self->_toolBarContainerView.alpha = 1;
                          }];
                      }];
     [self updateCollectionLayoutCompletion:^(BOOL complete) {
-        if (_delegate && [_delegate respondsToSelector:@selector(picturesBrowseView:didChangeToShowType:)]) {
-            [_delegate picturesBrowseView:self didChangeToShowType:_pictureShowType];
+        if (self->_delegate && [self->_delegate respondsToSelector:@selector(picturesBrowseView:didChangeToShowType:)]) {
+            [self->_delegate picturesBrowseView:self didChangeToShowType:self->_pictureShowType];
         }
     }];
 }
@@ -234,11 +234,11 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     }
 
     [UIView animateWithDuration:0.2 animations:^{
-        _collectionView.backgroundColor = [_backgroundColor colorWithAlphaComponent:0];
+        self->_collectionView.backgroundColor = [self->_backgroundColor colorWithAlphaComponent:0];
     }];
     [self updateCollectionLayoutCompletion:^(BOOL complete) {
-        if (_delegate && [_delegate respondsToSelector:@selector(picturesBrowseView:didChangeToShowType:)]) {
-            [_delegate picturesBrowseView:self didChangeToShowType:_pictureShowType];
+        if (self->_delegate && [self->_delegate respondsToSelector:@selector(picturesBrowseView:didChangeToShowType:)]) {
+            [self->_delegate picturesBrowseView:self didChangeToShowType:self->_pictureShowType];
         }
         [self removeFromSuperview];
     }];
@@ -255,7 +255,7 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
         }];
     } else {
         [UIView performWithoutAnimation:^{
-            [_collectionView performBatchUpdates:^{
+            [self->_collectionView performBatchUpdates:^{
                 [self updatePictureShowViewLayout];
             } completion:^(BOOL finished) {
                 if (completion) {
@@ -302,10 +302,10 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
         hasZoomOut = YES;
     } else {
         [UIView animateWithDuration:0.25 animations:^{
-            _collectionView.backgroundColor = _backgroundColor;
+            self->_collectionView.backgroundColor = _backgroundColor;
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.25 animations:^{
-                _toolBarContainerView.alpha = 1;
+                self->_toolBarContainerView.alpha = 1;
             }];
         }];
     }
@@ -469,23 +469,21 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     _imageView.contentMode      = UIViewContentModeCenter;
     
     
-    
     if (browseModel.pictureThumbUrl) {
         [_imageView sd_setImageWithURL:[NSURL URLWithString:browseModel.pictureThumbUrl]
                       placeholderImage:placeholderImage
                              completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                                     if (image) {
-                                        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+                                        self->_imageView.contentMode = UIViewContentModeScaleAspectFill;
                                     }
                                     if (browseModel.pictureHDUrl) {
-                                        [_imageView sd_setImageWithURL:[NSURL URLWithString:browseModel.pictureHDUrl]
+                                        [self->_imageView sd_setImageWithURL:[NSURL URLWithString:browseModel.pictureHDUrl]
                                                       placeholderImage:image ?: placeholderImage
-                                                               options:SDWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-                                                                        NSLog(@">>>>>>>>>>>>:%@", @((float)receivedSize / (float)expectedSize));
-                                                               }
+                                                               options:SDWebImageRetryFailed
+                                                              progress:nil
                                                              completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                                                                     if (image) {
-                                                                        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+                                                                        self->_imageView.contentMode = UIViewContentModeScaleAspectFill;
                                                                     }
                                                              }];
                                     }
@@ -545,19 +543,19 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     
     [UIView animateWithDuration:0.3
                      animations:^{
-                         if (_scaleScrollView.zoomScale <= 1) {
-                             _scaleScrollView.zoomScale     = MAX(scale, 2);
-                             _imageView.frame               = CGRectMake(0, 0, _scaleScrollView.contentSize.width, _scaleScrollView.contentSize.height);
+                         if (self->_scaleScrollView.zoomScale <= 1) {
+                             self->_scaleScrollView.zoomScale     = MAX(scale, 2);
+                             self->_imageView.frame               = CGRectMake(0, 0, self->_scaleScrollView.contentSize.width, self->_scaleScrollView.contentSize.height);
                              //双击放大跟谁点击位置放大
-                             float pointX                   = (_scaleScrollView.contentSize.width - _scaleScrollView.bounds.size.width) * tapHorizontalScale;
-                             float pointY                   = (_scaleScrollView.contentSize.height - _scaleScrollView.bounds.size.height) * tapVerticalScale;
-                             _scaleScrollView.contentOffset = CGPointMake(pointX, pointY);
+                             float pointX                   = (self->_scaleScrollView.contentSize.width - self->_scaleScrollView.bounds.size.width) * tapHorizontalScale;
+                             float pointY                   = (self->_scaleScrollView.contentSize.height - self->_scaleScrollView.bounds.size.height) * tapVerticalScale;
+                             self->_scaleScrollView.contentOffset = CGPointMake(pointX, pointY);
                          } else {
-                             _scaleScrollView.zoomScale = 1;
-                             _imageView.frame           = _imageViewFrame;
+                             self->_scaleScrollView.zoomScale = 1;
+                             self->_imageView.frame           = self->_imageViewFrame;
                          }
                      } completion:^(BOOL finished) {
-                         _imageOriginFrame = _imageView.frame;
+                         self->_imageOriginFrame = self->_imageView.frame;
                      }
      ];
 }
@@ -612,7 +610,7 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
         if (!hasZoomOut) {
             //还原
             [UIView animateWithDuration:0.25 animations:^{
-                _imageView.frame = _imageOriginFrame;
+                self->_imageView.frame = self->_imageOriginFrame;
             }];
         }
     }

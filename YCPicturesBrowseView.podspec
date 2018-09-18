@@ -16,10 +16,10 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YCPicturesBrowseView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "图片浏览的控件"
   s.platform     = :ios, '8.0'
-  
+
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
@@ -134,7 +134,7 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "SDWebImage", "~> 5.0.0-beta3"
+  s.dependency "SDWebImage", "~> 5.0.0-beta3" 
 
 
 end

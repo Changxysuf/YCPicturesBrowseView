@@ -586,14 +586,15 @@
 			baseConfigurationReference = 204C4E07C2C5B93A934BAD2D /* Pods-YCPicturesBrowseExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3CGKDFZPAL;
 				INFOPLIST_FILE = YCPicturesBrowseExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.changxy.picturesbrowse.YCPicturesBrowseExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lagou.testXCode9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -604,14 +605,15 @@
 			baseConfigurationReference = F5E07EB75A8A4B29998CAA1A /* Pods-YCPicturesBrowseExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3CGKDFZPAL;
 				INFOPLIST_FILE = YCPicturesBrowseExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.changxy.picturesbrowse.YCPicturesBrowseExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lagou.testXCode9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
