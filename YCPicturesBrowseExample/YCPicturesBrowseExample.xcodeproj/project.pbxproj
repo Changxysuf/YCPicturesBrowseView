@@ -21,6 +21,7 @@
 		2CA1E68B21477B4B00D86598 /* yc_image_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA1E68721477B4B00D86598 /* yc_image_placeholder@2x.png */; };
 		2CA1E68C21477B4B00D86598 /* yc_image_placeholder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA1E68821477B4B00D86598 /* yc_image_placeholder@3x.png */; };
 		2CA1E6D02147936000D86598 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E6CE2147936000D86598 /* UIView+Extension.m */; };
+		2CB02DB02152574B00FCDA05 /* TestToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB02DAF2152574B00FCDA05 /* TestToolBar.m */; };
 		6ED6270541EFB5035F8D5B33 /* libPods-YCPicturesBrowseExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A78A58CBCBE273BBE83DC /* libPods-YCPicturesBrowseExample.a */; };
 		E422DC5AB94CB9C4A3ED270B /* libPods-YCPicturesBrowseExampleUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F455AB1C783A83066911D6 /* libPods-YCPicturesBrowseExampleUITests.a */; };
 		E8C48040005660BF5E76E466 /* libPods-YCPicturesBrowseExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBE24123A0FCFC7FCD2DCC8 /* libPods-YCPicturesBrowseExampleTests.a */; };
@@ -74,6 +75,8 @@
 		2CA1E68821477B4B00D86598 /* yc_image_placeholder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yc_image_placeholder@3x.png"; sourceTree = "<group>"; };
 		2CA1E6CE2147936000D86598 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		2CA1E6CF2147936000D86598 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		2CB02DAE2152574B00FCDA05 /* TestToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestToolBar.h; sourceTree = "<group>"; };
+		2CB02DAF2152574B00FCDA05 /* TestToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestToolBar.m; sourceTree = "<group>"; };
 		2EB2C5108F7F30DF2967B3FA /* Pods-YCPicturesBrowseExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCPicturesBrowseExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCPicturesBrowseExampleUITests/Pods-YCPicturesBrowseExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EC6F1A8AF3B3FD147B1E296 /* Pods-YCPicturesBrowseExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YCPicturesBrowseExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YCPicturesBrowseExampleTests/Pods-YCPicturesBrowseExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9EBE24123A0FCFC7FCD2DCC8 /* libPods-YCPicturesBrowseExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YCPicturesBrowseExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +145,8 @@
 				2CA1E64E21476FB100D86598 /* AppDelegate.m */,
 				2CA1E65021476FB100D86598 /* ViewController.h */,
 				2CA1E65121476FB100D86598 /* ViewController.m */,
+				2CB02DAE2152574B00FCDA05 /* TestToolBar.h */,
+				2CB02DAF2152574B00FCDA05 /* TestToolBar.m */,
 				2CA1E65321476FB100D86598 /* Main.storyboard */,
 				2CA1E65621476FB300D86598 /* Assets.xcassets */,
 				2CA1E65821476FB300D86598 /* LaunchScreen.storyboard */,
@@ -419,6 +424,7 @@
 				2CA1E6D02147936000D86598 /* UIView+Extension.m in Sources */,
 				2CA1E65221476FB100D86598 /* ViewController.m in Sources */,
 				2C4C0C8B2150FB00000F2DAB /* YCPicturesBrowseCell.m in Sources */,
+				2CB02DB02152574B00FCDA05 /* TestToolBar.m in Sources */,
 				2CA1E68A21477B4B00D86598 /* YCPicturesBrowseViewLayout.m in Sources */,
 				2CA1E68921477B4B00D86598 /* YCPicturesBrowseView.m in Sources */,
 				2CA1E65D21476FB300D86598 /* main.m in Sources */,

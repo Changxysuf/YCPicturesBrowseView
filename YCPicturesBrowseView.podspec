@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YCPicturesBrowseView"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "图片浏览的控件"
   s.platform     = :ios, '8.0'
 

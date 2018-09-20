@@ -10,6 +10,7 @@
 #import "YCPicturesBrowseView.h"
 #import <UIImageView+WebCache.h>
 #import "UIView+Extension.h"
+#import "TestToolBar.h"
 
 @interface ViewController ()<YCPicturesBrowseViewDelegate, YCPicturesBrowseViewDataScource>
 
@@ -37,7 +38,8 @@
                        @"https://cdn.pixabay.com/photo/2018/09/01/04/15/boy-3646046__480.jpg",
                        @"https://cdn.pixabay.com/photo/2015/09/05/20/07/log-924958__480.jpg",
                        @"https://cdn.pixabay.com/photo/2017/03/29/11/45/dunes-2184976__480.jpg",
-                       @"https://cdn.pixabay.com/photo/2018/08/31/19/16/fan-3645379__480.jpg"];
+                       @"https://cdn.pixabay.com/photo/2018/08/31/19/16/fan-3645379__480.jpg",
+                       @"https://wx1.sinaimg.cn/mw690/aa27cfb9gy1fveot8si8dj20gf28z45e.jpg"];
     
     NSArray *hdUrlArray = @[@"http://a.hiphotos.baidu.com/image/h%3D300/sign=381f7e282b9759ee555066cb82fa434e/0dd7912397dda1449dd17697bfb7d0a20cf4863e.jpg",
                             @"http://f.hiphotos.baidu.com/image/h%3D300/sign=4d7d010c4c34970a5873162fa5cbd1c0/d043ad4bd11373f067aca6bca90f4bfbfbed0406.jpg",
@@ -50,7 +52,8 @@
                             @"https://cdn.pixabay.com/photo/2018/09/01/04/15/boy-3646046_1280.jpg",
                             @"https://cdn.pixabay.com/photo/2015/09/05/20/07/log-924958_1280.jpg",
                             @"https://cdn.pixabay.com/photo/2017/03/29/11/45/dunes-2184976_1280.jpg",
-                            @"https://cdn.pixabay.com/photo/2018/08/31/19/16/fan-3645379_1280.jpg"];
+                            @"https://cdn.pixabay.com/photo/2018/08/31/19/16/fan-3645379_1280.jpg",
+                            @"https://wx1.sinaimg.cn/mw690/aa27cfb9gy1fveot8si8dj20gf28z45e.jpg"];
     
     _resultArray = [NSMutableArray array];
     _imageViewArray = [NSMutableArray array];
@@ -104,26 +107,15 @@
     
     
     
-//    RWImageToolBar *toolBar = [[RWImageToolBar alloc] initWithContentWidth:self.view.yc_width];
+    TestToolBar *toolBar = [[TestToolBar alloc] init];
     
     
-    //    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     YCPicturesBrowseView *pictureBrowseView = [YCPicturesBrowseView browseViewPictureArray:_resultArray index:index];
     pictureBrowseView.delegate = self;
     pictureBrowseView.dataSource = self;
-//    pictureBrowseView.toolbar = toolBar;
+    pictureBrowseView.toolbar = toolBar;
     [pictureBrowseView showOnViewKeyWindowFromView:tapView animation:YES];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -136,8 +128,12 @@
 - (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView didChangeToShowType:(YCPictureShowType)showType {
     NSLog(@"didChangeToShowType:%@", @(showType));
 }
-
-
+- (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView didSwipImageWithScale:(float)scale {
+    
+}
+- (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView willSwipImageAtIndex:(NSInteger)index {
+    
+}
 - (UIView *)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView targetViewAtIndex:(NSInteger)index {
     return _imageViewArray[index];
     

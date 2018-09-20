@@ -32,6 +32,8 @@
 
 - (void)collectionViewCell:(YCPicturesBrowseCell *)cell didLongPressForImage:(UIImage *)image;
 
+- (void)collectionViewCellWillSwipImage;
+
 @end
 
 

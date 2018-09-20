@@ -58,11 +58,7 @@
     _scaleScrollView.maximumZoomScale = 4.0;
     //设置最小伸缩比例
     _scaleScrollView.minimumZoomScale = 1;
-    if (@available(iOS 11.0, *)) {
-        _scaleScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
     [self.contentView addSubview:_scaleScrollView];
-    
     
     _imageView             = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_resume_pic_placeholder.png"]];
     _imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -93,7 +89,6 @@
     if (CGSizeEqualToSize(imageSize, CGSizeZero)) return;
     
     if (_showType == YCPictureBrowseTypeOfZoomIn) {
-        //        if (_imageOriginFrame) return;
         
         float scale             = imageSize.width / imageSize.height;
         float newImageWidth     = self.bounds.size.width;
@@ -214,15 +209,15 @@
 }
 -(void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        //        _imageOriginFrame = _imageView.frame;
+        if (_delegate && [_delegate respondsToSelector:@selector(collectionViewCellWillSwipImage)]) {
+            [_delegate collectionViewCellWillSwipImage];
+        }
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
         
         CGPoint point = [panGestureRecognizer translationInView:_scaleScrollView];
         
-        CGFloat centerX = _imageView.center.x + point.x;
-        CGFloat centerY = _imageView.center.y + point.y;
-        
-
+        CGFloat centerX = _imageView.center.x + point.x / _scaleScrollView.zoomScale;
+        CGFloat centerY = _imageView.center.y + point.y / _scaleScrollView.zoomScale;
         
         //向下拖动的比例, 屏幕中间点是0, 最下方是1
         float scale = 0;
@@ -231,7 +226,6 @@
         } else {
             scale = ((centerY / _imageOriginFrame.size.height) - 0.5) * _scaleScrollView.zoomScale;
         }
-        
         
         //当前拖动比例下的宽高
         float currentWidth = _imageViewFrame.size.width - (_imageViewFrame.size.width * scale);
@@ -245,9 +239,6 @@
             size.width = 200;
             size.height = size.width * (_imageViewFrame.size.height / _imageViewFrame.size.width);
         }
-        centerY = _imageView.center.y + point.y / _scaleScrollView.zoomScale;
-        
-        NSLog(@"width :%@ height :%@ scale:%@", @(centerX), @(centerY), @(scale));
 
         //设置size 和center
         _imageView.bounds = CGRectMake(0, 0, size.width, size.height);

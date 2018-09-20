@@ -17,18 +17,18 @@
 @end
 
 
-
 #pragma mark -
 #pragma mark - YCPicturesBrowseView
 
 static NSString *KCollectionViewCellId = @"CollectionViewCellId";
-
 
 @interface YCPicturesBrowseView ()<UICollectionViewDelegate, UICollectionViewDataSource, YCPicturesBrowseCellDelegate>
 
 @end
 
 @implementation YCPicturesBrowseView {
+    BOOL _didCreateSubViews;
+    
     //图片model的数组
     NSArray     *_pictureArray;
     
@@ -73,7 +73,7 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self updateDisPlay];
+    [self updateToolBar];
 }
 
 
@@ -95,48 +95,52 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
 #pragma mark - User Interaction 用户交互
 
 #pragma mark - Private method 私有方法
+- (void)createSubViews {
+    if (_didCreateSubViews) {
+        return;
+    }
+    if (!_backgroundColor) {
+        _backgroundColor = [UIColor colorWithRed:26.0 / 255.0 green:26.0 / 255.0 blue:26.0 / 255.0 alpha:1];
+    }
+
+    _collectionViewLayout = [[YCPicturesBrowseViewLayout alloc] init];
+    _collectionViewLayout.showType = _pictureShowType;
+    _collectionViewLayout.currentPageIndex = _index;
+
+    _collectionView                                = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_collectionViewLayout];
+    _collectionView.showsVerticalScrollIndicator   = NO;
+    _collectionView.showsHorizontalScrollIndicator = NO;
+    _collectionView.backgroundColor                = [_backgroundColor colorWithAlphaComponent:0];
+    _collectionView.delegate                       = self;
+    _collectionView.dataSource                     = self;
+    _collectionView.pagingEnabled                  = YES;
+    _collectionView.contentInset                   = UIEdgeInsetsZero;
+    [_collectionView registerClass:[YCPicturesBrowseCell class] forCellWithReuseIdentifier:KCollectionViewCellId];
+    [self addSubview:_collectionView];
+    
+    if (@available(iOS 11.0, *)) {
+        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    _didCreateSubViews = YES;
+}
 - (void)configCollectionInitialStateWithFromeView:(UIView *)fromView {
     _collectionView.frame = self.bounds;
-    _collectionView.contentOffset = CGPointMake(_index * _collectionView.bounds.size.width, _collectionView.bounds.size.height);
-    
+    _collectionView.contentOffset = CGPointMake(_index * _collectionView.bounds.size.width, 0);
     _collectionViewLayout.collectionViewBounds = self.bounds;
+    
     //默认
     CGRect zoomOutFrame = CGRectMake(self.bounds.size.width / 2, self.bounds.size.height / 2, 0, 0);
     if (fromView) {
         zoomOutFrame = [fromView convertRect:fromView.bounds toView:[UIApplication sharedApplication].keyWindow];
     }
     _collectionViewLayout.zoomOutFrame = zoomOutFrame;
-
 }
-- (void)createSubViews {
-    
-    _collectionViewLayout = [[YCPicturesBrowseViewLayout alloc] init];
-    _collectionViewLayout.showType = _pictureShowType;
-    _collectionViewLayout.currentPageIndex = _index;
 
-
-    _collectionView                                = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_collectionViewLayout];
-    _collectionView.showsVerticalScrollIndicator   = NO;
-    _collectionView.showsHorizontalScrollIndicator = NO;
-    
-    if (!_backgroundColor) {
-        _backgroundColor = [UIColor colorWithRed:26.0 / 255.0 green:26.0 / 255.0 blue:26.0 / 255.0 alpha:1];
-    }
-    _collectionView.backgroundColor                = [_backgroundColor colorWithAlphaComponent:0];
-    _collectionView.delegate                       = self;
-    _collectionView.dataSource                     = self;
-    _collectionView.pagingEnabled                  = YES;
-    _collectionView.contentInset = UIEdgeInsetsZero;
-    [_collectionView registerClass:[YCPicturesBrowseCell class] forCellWithReuseIdentifier:KCollectionViewCellId];
-    
-    [self addSubview:_collectionView];
-    
-    if (@available(iOS 11.0, *)) {
-        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-}
 // 更新视图(主要是更新pageview)
-- (void)updateDisPlay {
+- (void)updateToolBar {
+    if (!self.toolbar) {
+        return;
+    }
     if (!_pictureArray || _pictureArray.count == 0) {
         NSLog(@"数组不能为空");
         return;
@@ -145,7 +149,6 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
         NSLog(@"索引大于数组的个数");
         return;
     }
-    
     
     YCPicturesBrowseModel *showModel = _pictureArray[_index];
     
@@ -171,16 +174,14 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     if (!self.toolbar) {
         return;
     }
-    if ([self.toolbar respondsToSelector:@selector(updateDisplayWithPicturesBrowseSize:safeArea:)]) {
+    if ([self.toolbar respondsToSelector:@selector(frameForToolbarWithPicturesBrowseSize:safeArea:)]) {
         UIEdgeInsets insets = UIEdgeInsetsZero;
         if (@available(iOS 11.0, *)) {
             insets = self.superview.safeAreaInsets;
         }
-        [self.toolbar updateDisplayWithPicturesBrowseSize:_collectionView.bounds.size safeArea:insets];
-        _toolBarContainerView.frame = self.toolbar.frame;
+        _toolBarContainerView.frame = [self.toolbar frameForToolbarWithPicturesBrowseSize:_collectionView.bounds.size safeArea:insets];
         self.toolbar.frame = _toolBarContainerView.bounds;
     }
-    
 }
 
 //更新layout
@@ -227,8 +228,8 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
 }
 //缩小
 - (void)zoomOutLayout {
-    _pictureShowType         = YCPictureBrowseTypeOfZoomOut;
-    _toolBarContainerView.hidden     = YES;
+    _pictureShowType = YCPictureBrowseTypeOfZoomOut;
+    _toolBarContainerView.hidden = YES;
     if (_delegate && [_delegate respondsToSelector:@selector(picturesBrowseView:willChangeToShowType:)]) {
         [_delegate picturesBrowseView:self willChangeToShowType:_pictureShowType];
     }
@@ -292,6 +293,9 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
         _toolBarContainerView.alpha = 0;
     }
     _collectionView.backgroundColor = [_backgroundColor colorWithAlphaComponent:1 - (scale * 0.8)];
+    if (_delegate && [_delegate respondsToSelector:@selector(picturesBrowseView:swipingImageWithScale:)]) {
+        [_delegate picturesBrowseView:self swipingImageWithScale:scale];
+    }
 }
 
 - (BOOL)collectionViewCell:(YCPicturesBrowseCell *)cell didEndSwipImageWithVelocity:(CGPoint)velocity {
@@ -316,24 +320,34 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
         [_delegate picturesBrowseView:self didLongPressImageModel:cell.picturesBrowseModel];
     }
 }
-
+- (void)collectionViewCellWillSwipImage {
+    if (_delegate && [_delegate respondsToSelector:@selector(picturesBrowseView:willSwipImageAtIndex:)]) {
+        [_delegate picturesBrowseView:self willSwipImageAtIndex:_index];
+    }
+}
 
 #pragma mark - Delegate of <UICollectionViewDelegate> 回调
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self zoomOutLayout];
-}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == _collectionView) {
-        CGFloat page      = scrollView.contentOffset.x / scrollView.bounds.size.width;
-        int     pageIndex = page + 0.5;
-        
-        if (pageIndex >= 0 && pageIndex < _pictureArray.count) {
-            if (pageIndex != _index) {
-                _index = pageIndex;
-                [self updateDisPlay];
-            }
+        if (self.toolbar && [self.toolbar respondsToSelector:@selector(updateContentOffset:forScrollView:)]) {
+            [self.toolbar updateContentOffset:scrollView.contentOffset forScrollView:scrollView];
         }
     }
+}
+             
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if (scrollView != _collectionView) {
+        return;
+    }
+
+    CGFloat pageWidth = scrollView.frame.size.width;
+    CGPoint point = *targetContentOffset;
+    _index = floor((point.x - pageWidth / 2) / pageWidth) + 1;
+    [self updateToolBar];
+
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self zoomOutLayout];
 }
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     YCPicturesBrowseCell *displayCell = (YCPicturesBrowseCell *)cell;

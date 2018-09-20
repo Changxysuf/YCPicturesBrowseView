@@ -51,6 +51,8 @@
 - (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView willChangeToShowType:(YCPictureShowType)showType;
 - (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView didChangeToShowType:(YCPictureShowType)showType;
 - (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView didLongPressImageModel:(YCPicturesBrowseModel *)picturesBrowseModel;
+- (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView willSwipImageAtIndex:(NSInteger)index;
+- (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView swipingImageWithScale:(float)scale;
 
 @end
 

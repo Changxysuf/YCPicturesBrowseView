@@ -15,9 +15,10 @@
 - (void)setPictureDesc:(NSString *)pictureDesc;
 - (void)setCurrentPage:(NSInteger)currentPage totalPage:(NSInteger)totalPage;
 - (void)updatePictureBrowseModel:(YCPicturesBrowseModel *)browseModel;
+- (void)updateContentOffset:(CGPoint)offset forScrollView:(UIScrollView *)scrollView;
 
 @required
-//需要在这个方法中设置自己的frame
-- (void)updateDisplayWithPicturesBrowseSize:(CGSize)size safeArea:(UIEdgeInsets)safeArea;
+//需要在这个方法中返回自己的frame
+- (CGRect)frameForToolbarWithPicturesBrowseSize:(CGSize)size safeArea:(UIEdgeInsets)safeArea;
 
 @end
