@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "YCPicturesBrowseViewLayout.h"
 #import "YCPicturesBrowseView.h"
+#import "SDWebImageDownloader.h"
 
 #pragma mark - LGPicturesShowCollectionViewCell
 
@@ -108,6 +109,36 @@
     _imageViewFrame = _imageView.frame;
     _imageOriginFrame = _imageView.frame;
 }
+- (void)downloadHdImageWithUrl:(NSString *)urlString {
+    if (!urlString.length) {
+        return;
+    }
+    NSURL *url = [NSURL URLWithString:urlString];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    NSString *cacheKey = [manager cacheKeyForURL:url];
+    [[manager imageCache] queryImageForKey:cacheKey options:0 context:nil completion:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
+        if (image) {
+            self->_imageView.image = image;
+            self->_imageView.contentMode = UIViewContentModeScaleAspectFill;
+        } else {
+            [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:url
+                                                                  options:SDWebImageDownloaderHighPriority
+                                                                 progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+//                                                                     NSLog(@"progress:%@", @((double)receivedSize / (double)expectedSize));
+                                                                 }
+                                                                completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+                                                                    @synchronized(self) {
+                                                                        if (image) {
+                                                                            [[manager imageCache] storeImage:image imageData:data forKey:cacheKey cacheType:SDImageCacheTypeDisk completion:nil];
+                                                                            self->_imageView.image = image;
+                                                                            self->_imageView.contentMode = UIViewContentModeScaleAspectFill;
+                                                                        }
+                                                                    }
+                                                                }];
+        }
+    }];
+
+}
 #pragma mark - Public Interface 公有方法
 - (void)updateDisplayWithPicturesBrowseModel:(YCPicturesBrowseModel *)browseModel {
     _picturesBrowseModel = browseModel;
@@ -124,17 +155,7 @@
                                  if (image) {
                                      self->_imageView.contentMode = UIViewContentModeScaleAspectFill;
                                  }
-                                 if (browseModel.pictureHDUrl) {
-                                     [self->_imageView sd_setImageWithURL:[NSURL URLWithString:browseModel.pictureHDUrl]
-                                                         placeholderImage:image ?: placeholderImage
-                                                                  options:SDWebImageRetryFailed
-                                                                 progress:nil
-                                                                completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                                                                    if (image) {
-                                                                        self->_imageView.contentMode = UIViewContentModeScaleAspectFill;
-                                                                    }
-                                                                }];
-                                 }
+                                 [self downloadHdImageWithUrl:browseModel.pictureHDUrl];
                              }];
     }
     [self resetImageViewFrame];
