@@ -153,6 +153,7 @@
             UIImage *image = [UIImage imageWithContentsOfFile:browseModel.pictureLocalFilePath];
             if (image) {
                 _imageView.image = image;
+                _imageView.contentMode = UIViewContentModeScaleAspectFill;
                 return;
             }
         }
