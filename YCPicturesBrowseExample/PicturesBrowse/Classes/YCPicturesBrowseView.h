@@ -18,7 +18,7 @@
 /**
  * 缩略图Url
  */
-@property(nonatomic, copy) NSString *pictureThumbUrl;
+@property (nonatomic, copy) NSString *pictureThumbUrl;
 
 /**
  * 高清图的url
@@ -26,19 +26,29 @@
 @property (nonatomic, copy) NSString *pictureHDUrl;
 
 /**
+ * 本地路径
+ */
+@property (nonatomic, copy) NSString *pictureLocalFilePath;
+
+/**
  * 图片的标题
  */
-@property(nonatomic, copy) NSString *pictureTitle;
+@property (nonatomic, copy) NSString *pictureTitle;
 
 /**
  * 图片的描述
  */
-@property(nonatomic, copy) NSString *pictureContent;
+@property (nonatomic, copy) NSString *pictureContent;
 
 /**
  * placeholder图片
  */
-@property(nonatomic, strong) UIImage *placeholderImage;
+@property (nonatomic, strong) UIImage *placeholderImage;
+
+/**
+ * 附加的model
+ */
+@property (nonatomic, strong) id additionalModel;
 
 @end
 
@@ -53,6 +63,7 @@
 - (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView didLongPressImageModel:(YCPicturesBrowseModel *)picturesBrowseModel;
 - (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView willSwipImageAtIndex:(NSInteger)index;
 - (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView swipingImageWithScale:(float)scale;
+- (void)picturesBrowseView:(YCPicturesBrowseView *)picturesBrowseView didScrollToIndex:(NSInteger)index;
 
 @end
 

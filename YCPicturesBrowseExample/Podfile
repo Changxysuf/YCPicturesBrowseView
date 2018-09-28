@@ -6,7 +6,7 @@ target 'YCPicturesBrowseExample' do
   # use_frameworks!
 
   # Pods for YCPicturesBrowseExample
-  pod 'SDWebImage'
+  pod 'SDWebImage', '~> 5.0.0-beta3'
 
   target 'YCPicturesBrowseExampleTests' do
     inherit! :search_paths

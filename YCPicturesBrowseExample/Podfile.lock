@@ -1,18 +1,18 @@
 PODS:
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
+  - SDWebImage (5.0.0-beta3):
+    - SDWebImage/Core (= 5.0.0-beta3)
+  - SDWebImage/Core (5.0.0-beta3)
 
 DEPENDENCIES:
-  - SDWebImage
+  - SDWebImage (~> 5.0.0-beta3)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - SDWebImage
 
 SPEC CHECKSUMS:
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SDWebImage: e52654ceef9fdc19f4c612d64a5b6d3f05dd81a4
 
-PODFILE CHECKSUM: 32a0d8435108eae5d8e73f8097878a30ac7a4910
+PODFILE CHECKSUM: 027a237a130f37bd724d9b6a161734a039db6aeb
 
 COCOAPODS: 1.5.0

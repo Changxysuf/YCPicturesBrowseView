@@ -344,7 +344,9 @@ static NSString *KCollectionViewCellId = @"CollectionViewCellId";
     CGPoint point = *targetContentOffset;
     _index = floor((point.x - pageWidth / 2) / pageWidth) + 1;
     [self updateToolBar];
-
+    if (_delegate && [_delegate respondsToSelector:@selector(picturesBrowseView:didScrollToIndex:)]) {
+        [_delegate picturesBrowseView:self didScrollToIndex:_index];
+    }
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self zoomOutLayout];

@@ -116,6 +116,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     NSString *cacheKey = [manager cacheKeyForURL:url];
+    
     [[manager imageCache] queryImageForKey:cacheKey options:0 context:nil completion:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
         if (image) {
             self->_imageView.image = image;
@@ -124,7 +125,7 @@
             [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:url
                                                                   options:SDWebImageDownloaderHighPriority
                                                                  progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-//                                                                     NSLog(@"progress:%@", @((double)receivedSize / (double)expectedSize));
+                                                                     //NSLog(@"progress:%@", @((double)receivedSize / (double)expectedSize));
                                                                  }
                                                                 completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
                                                                     @synchronized(self) {
@@ -147,6 +148,15 @@
     _imageView.image            = placeholderImage;
     _imageView.contentMode      = UIViewContentModeCenter;
     
+    if (browseModel.pictureLocalFilePath.length) {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:browseModel.pictureLocalFilePath]) {
+            UIImage *image = [UIImage imageWithContentsOfFile:browseModel.pictureLocalFilePath];
+            if (image) {
+                _imageView.image = image;
+                return;
+            }
+        }
+    }
     
     if (browseModel.pictureThumbUrl) {
         [_imageView sd_setImageWithURL:[NSURL URLWithString:browseModel.pictureThumbUrl]
